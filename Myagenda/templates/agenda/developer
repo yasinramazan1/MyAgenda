@@ -1,0 +1,19 @@
+{% extends 'agenda/base' %}
+
+{% block title %}
+    Developer Hakkında
+{% endblock title%}
+
+{% block content %}
+<style >
+    body {background-image: url("https://wallpaperaccess.com/full/1385324.jpg"); background-size:100% 152%;} 
+</style>
+<font face="courier" color="#ff9800">
+<h1>Merhaba!</h1>
+<h1>-Ben Yasin Ramazan Gök.</h1>
+<h1>-Elazığ Fırat Üniversitesi Teknoloji Fakültesi Yazılım Mühendisliği Bölümü 2. sınıf öğrencisiyim.</h1>
+<h1>-Bu uygulama, benim Python-Django ile ve aynı zamanda da web programlama alanındaki ilk projem olma özelliğini taşıyor.</h1>
+<h1>-Basit bir ajanda uygulaması olan MyAgenda ile günlük faaliyetlerinizi düzenleyebilir ve takip edebilirsiniz. </h1>
+<h1>-Çalışmalarınızda başarılar dilerim.</h1>
+</font>
+{% endblock content %}

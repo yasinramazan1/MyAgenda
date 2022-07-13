@@ -1,0 +1,89 @@
+ {% extends 'agenda/base' %} 
+ <!-- Bu dosya base dosyasından extend edildi -->
+ <!-- 
+   Bu kullanıma Jinja Template denilir. html kodları içerisinde python kodlarını 
+   çalıştırabilmek için kullanılan bir yaklaşımdır.
+ -->
+
+ {% block title %}
+    MyAgenda
+ {% endblock title %}
+
+ {% block content %}
+ 
+ <div class="jumbotron jumbotron-fluid">
+   <div class="container">
+     <br></br>
+     <h1  class="display-3"><center><font color="#afab21" face="forte">MyAgenda</font></center></h1>
+    <p class="lead"><center><b><font color="#17cb72">MyAgenda ile günlük işlerinizi takip edin ve düzenleyin.</font></b></center></p>
+    <br></br>
+    <div class="text-center">
+      <a  class="btn btn-outline-success" href="{% url 'create' %}" role="button"><b>Yeni İş Ekle</b></a> 
+    </div>
+    <br></br>
+    <div class="container"> 
+    <!-- Burada tabloyu div'in içinde container yaparak ortalamış oluyoruz. -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th  scope="col"><font color="##1cfc0d" size="5">Yapılacaklar</font></th>
+          <th class="dea" scope="col"><font color="##1cfc0d" size="5">Bitti mi?</font></th>
+          <th scope="col"><font color="##1cfc0d" size="5">Tarih</font></th>
+          <th scope="col"><font color="##1cfc0d" size="5">Silme</font></th>
+          <th scope="col"><font color="##1cfc0d" size="5">Güncelleme</font></th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        {% for todo in todo_list %}
+        <!-- Burada for döngüsüne alarak ilgili sütunlara ilgili başlıkların,
+             değerlerin, kayıtların gelmesini sağladık. 
+        -->
+          {% if todo.finished %}
+            <tr>
+              <td><del><font color="#b4fc19">{{ todo.title }}</font></del></td>
+              <td><a class="btn btn-success" href="{% url 'yes_finish' todo.id %}" role="button">Bitti</a></td>
+              <td><b><font color="#14bc2c">{{ todo.date }}</font></b></td>
+              <td><a class="btn btn-warning" href="{% url 'delete' todo.id %}" role="button">Sil</a></td>
+              <td><a class="btn btn-primary" href="{% url 'update' todo.id %}" role="button">Güncelle</a></td>
+            </tr>
+          {% else %}
+            <tr>
+              <td><font color="#fd8805">{{ todo.title }}</font></td>
+              <td><a  class="btn btn-danger dea" href="{% url 'no_finish' todo.id %}" role="button">Bitmedi</a></td>
+              <td><b><font color="#9099de">{{ todo.date }}</font></b></td>
+              <td><a class="btn btn-warning" href="{% url 'delete' todo.id %}" role="button">Sil</a></td>
+              <td><a class="btn btn-primary" href="{% url 'update' todo.id %}" role="button">Güncelle</a></td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+    
+  </div>
+</div>
+<br></br> <!-- br etiketi boşluk bırakmaya yarar -->
+  <!-- 
+    {{ todo_list }} 
+    Bu şekilde views dosyasındaki todo_list key'ini çağırdık.
+    Bu home sayfasında QuerySet şeklinde çıktı verecektir.
+    Bu yüzden alt alta çıktı vermesi için Jinja Template'te for döngüsü yaparız. 
+  -->
+ 
+  <!--
+    {% for todo in todo_list %}
+      {{ todo.title }} 
+      Buraya description ya da finished özelliğini yazsaydık onları listeleyecekti.  
+    {% endfor %}  
+  -->
+  <!-- Tablo oluşturduktan sonra bu kısmı yorum haline getirdik. --> 
+  <style>body {
+    background-color: #aaa1d4;
+}
+  .dea{
+    margin-left: 20px;
+  }
+</style>
+  {% endblock content %}
+  

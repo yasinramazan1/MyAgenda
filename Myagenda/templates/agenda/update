@@ -1,0 +1,54 @@
+{% extends 'agenda/base' %}
+
+{% block title %}
+    Yeni İş Ekle
+{% endblock title%}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1  class="display-3"><center><font color="#afab21" face="forte">MyAgenda</font></center></h1>
+      <p class="lead"><center><b><font color="#17cb72">MyAgenda ile günlük işlerinizi takip edin ve düzenleyin.</font></b></center></p>
+      <br></br>
+      <div>
+         <form method ="POST"> 
+            {% csrf_token %}
+            <div class="form-group row">
+              <label  class="col-sm-2 col-form-label"><b><font color="#af5a41">Yeni İş</font></b></label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="title">
+                <!-- Buradaki name'e atanan değerler models dosyasında atanan değerlerdir. -->
+              </div>
+            </div>
+            <br></br>
+            <div class="form-group row">
+              <label  class="col-sm-2 col-form-label"><b><font color="#af5a41">Açıklama</font></b></label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="description">
+              </div>
+            </div>
+            <br></br>
+            <fieldset class="form-group row">
+              <legend class="col-form-label col-sm-2 float-sm-left pt-0"><b><font color="#af5a41">Durum</font></b></legend>
+                <div class="col-sm-10">
+                  <div class="form-group row">
+                      <div class="col-sm-2 offset-sm-0">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" name="finished">
+                          <label class="form-check-label" ><font color="#e19625"><b>Bitti mi?</b></font></label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br></br>
+              </fieldset>
+            
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Güncelle</button>
+              </div>
+            </div>
+          </form>
+      </div>
+{% endblock content %}

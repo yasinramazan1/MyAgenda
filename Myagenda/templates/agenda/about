@@ -1,0 +1,29 @@
+{% extends 'agenda/base'%}
+
+{% block title %}
+    MyAgenda Hakkında
+{% endblock title%}
+
+{% block content %}
+<style >
+  body {background-image: url("https://wallpaperaccess.com/full/1287687.jpg"); background-size:100% 239%;} 
+</style>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1  class="display-3"><center><font color="#afab21" face="forte">MyAgenda</font></center></h1>
+    <font color="#ff8000">
+      <b>
+    <p class="lead"><center>MyAgenda ile günlük işlerinizi takip edin ve düzenleyin.</center></p>
+    <p class="lead"><center>MyAgenda, Elazığ Fırat Üniversitesi Teknoloji Fakültesi Yazılım Mühendisliği Bölümü'nde Python-Django ve Bootstrap kullanılarak geliştirildi.</center></p>
+    <p class="lead"><center>MyAgenda çok yakında mobil platformlarda!</center></p>
+    <p class="lead"><center>Yasin Ramazan GÖK, 2022.</center></p>
+      </b>
+  </font>
+
+  </div>
+</div>
+<!-- 
+  <h1> Bu site {{ name }} tarafından geliştirildi.</h1> 
+  Buradak kullanılan Jinja Template örneği değişken çağırmadır. 
+-->
+ {% endblock content %}
